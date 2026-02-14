@@ -78,6 +78,7 @@
 
     //--- 11. FOREACH con directivas EMIC dentro ---
     // Verificar que se definieron
+    TEST_FOREACH_DEFINE: OK - test_iter_mod_a fue definido dentro del foreach
 
     //--- 12. FOREACH + CONDICIONAL dentro ---
     // uart tiene baud (definido arriba), spi tiene clock, i2c tiene addr
