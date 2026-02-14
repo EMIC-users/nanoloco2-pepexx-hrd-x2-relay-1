@@ -44,24 +44,30 @@
     // 6a. if con igualdad
     TEST_IF_EQUAL: OK - parity es none
     // 6b. if/elif/else
-    TEST_ELIF: FAIL - cayo en else
+    TEST_ELIF: OK - mode es 0
 
     //--- 7. UNDEFINE ---
     // 7a. Verificar que existe antes de eliminar
     TEST_UNDEF_BEFORE: OK - flags.temp_flag existe
     // 7b. Eliminar
-EMIC:unDefine(flags.temp_flag)
     // 7c. Verificar que ya no existe
     TEST_UNDEF_AFTER: OK - flags.temp_flag fue eliminado
 
     //--- 8. FOREACH basico (2 niveles) ---
+    TEST_FOREACH: key=alpha value= valor_A
+    TEST_FOREACH: key=beta value= valor_B
+    TEST_FOREACH: key=gamma value= valor_C
 
     //--- 9. FOREACH con 3 niveles ---
+    TEST_FOREACH_3NIV: prop=baud val= 9600
+    TEST_FOREACH_3NIV: prop=parity val= none
+    TEST_FOREACH_3NIV: prop=stopBits val= 1
 
     //--- 10. FOREACH anidado con {*} y {**} ---
 
     //--- 11. FOREACH con directivas EMIC dentro ---
     // Verificar que se definieron
+    TEST_FOREACH_DEFINE: OK - test_iter_mod_a fue definido dentro del foreach
 
     //--- 12. FOREACH + CONDICIONAL dentro ---
     // uart tiene baud (definido arriba), spi tiene clock, i2c tiene addr
