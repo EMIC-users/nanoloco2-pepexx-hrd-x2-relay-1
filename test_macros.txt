@@ -64,6 +64,8 @@
     TEST_FOREACH_3NIV: prop=stopBits val= 1
 
     //--- 10. FOREACH anidado con {*} y {**} ---
+    TEST_NESTED_OUTER: periferico=uart
+    TEST_NESTED_OUTER: periferico=spi
 
     //--- 11. FOREACH con directivas EMIC dentro ---
     // Verificar que se definieron
