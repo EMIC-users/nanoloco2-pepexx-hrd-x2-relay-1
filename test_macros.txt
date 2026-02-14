@@ -68,11 +68,11 @@
 
     //--- 10. FOREACH anidado con {*} y {**} ---
     TEST_NESTED_OUTER: periferico=uart
-    TEST_NESTED_OUTER: periferico=spi
     TEST_NESTED_INNER:   uart.baud =  9600
     TEST_NESTED_INNER:   uart.parity =  none
     TEST_NESTED_INNER:   uart.stopBits =  1
     TEST_NESTED_INNER:   uart.clock =  16000000
+    TEST_NESTED_OUTER: periferico=spi
     TEST_NESTED_INNER:   spi.clock =  1000000
     TEST_NESTED_INNER:   spi.mode =  0
 
