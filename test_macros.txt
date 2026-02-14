@@ -1,0 +1,71 @@
+
+    //--- 1. DEFINE: simple, 2 niveles, 3 niveles ---
+
+    //--- 2. SUSTITUCION: simple, 2 niveles, 3 niveles ---
+    // 2a. Simple
+    TEST_SIMPLE: version =  3.0
+    // 2b. Grupo (2 niveles)
+    TEST_GRUPO: alpha =  valor_A
+    TEST_GRUPO: beta =  valor_B
+    // 2c. Tres niveles
+    TEST_3NIV: uart.baud =  9600
+    TEST_3NIV: spi.clock =  1000000
+
+    //--- 3. EXPANSION WILDCARD: multilinea (N lineas) ---
+    // 3a. Comodin 2 niveles
+    TEST_WILDCARD_MULTI:  valor_A
+    TEST_WILDCARD_MULTI:  valor_B
+    TEST_WILDCARD_MULTI:  valor_C
+    // 3b. Comodin 3er nivel
+    TEST_WILDCARD_3NIV:  9600
+    TEST_WILDCARD_3NIV:  none
+    TEST_WILDCARD_3NIV:  1
+    // 3c. Comodin 2do nivel (medio)
+    TEST_WILDCARD_MID:  1000000
+
+    //--- 4. EXPANSION JOIN: una linea con separador ---
+    TEST_JOIN_COMA:  valor_A,  valor_B,  valor_C
+    TEST_JOIN_PIPE:  valor_A |  valor_B |  valor_C
+    TEST_JOIN_3NIV:  9600;  none;  1
+
+    //--- 5. IFDEF / IFNDEF ---
+    // 5a. ifdef simple
+    TEST_IFDEF_SIMPLE: OK - TEST_VERSION existe
+    // 5b. ifdef 2 niveles
+    TEST_IFDEF_GRUPO: OK - test_col.alpha existe
+    // 5c. ifdef 3 niveles
+    TEST_IFDEF_3NIV: OK - hw.uart.baud existe
+    // 5d. ifndef (debe ejecutarse porque no existe)
+    TEST_IFNDEF: OK - MACRO_INEXISTENTE no existe
+    // 5e. ifndef 3 niveles (debe ejecutarse)
+    TEST_IFNDEF_3NIV: OK - hw.uart.flowControl no existe
+
+    //--- 6. IF / ELIF / ELSE ---
+    // 6a. if con igualdad
+    TEST_IF_EQUAL: OK - parity es none
+    // 6b. if/elif/else
+    TEST_ELIF: FAIL - cayo en else
+
+    //--- 7. UNDEFINE ---
+    // 7a. Verificar que existe antes de eliminar
+    TEST_UNDEF_BEFORE: OK - flags.temp_flag existe
+    // 7b. Eliminar
+EMIC:unDefine(flags.temp_flag)
+    // 7c. Verificar que ya no existe
+    TEST_UNDEF_AFTER: OK - flags.temp_flag fue eliminado
+
+    //--- 8. FOREACH basico (2 niveles) ---
+
+    //--- 9. FOREACH con 3 niveles ---
+
+    //--- 10. FOREACH anidado con {*} y {**} ---
+
+    //--- 11. FOREACH con directivas EMIC dentro ---
+    // Verificar que se definieron
+
+    //--- 12. FOREACH + CONDICIONAL dentro ---
+    // uart tiene baud (definido arriba), spi tiene clock, i2c tiene addr
+
+    //--- FIN DEL TEST ---
+    TEST_COMPLETE: Todas las pruebas de macros ejecutadas
+
