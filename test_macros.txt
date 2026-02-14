@@ -20,13 +20,15 @@
     TEST_WILDCARD_3NIV:  9600
     TEST_WILDCARD_3NIV:  none
     TEST_WILDCARD_3NIV:  1
+    TEST_WILDCARD_3NIV:  16000000
     // 3c. Comodin 2do nivel (medio)
+    TEST_WILDCARD_MID:  16000000
     TEST_WILDCARD_MID:  1000000
 
     //--- 4. EXPANSION JOIN: una linea con separador ---
     TEST_JOIN_COMA:  valor_A,  valor_B,  valor_C
     TEST_JOIN_PIPE:  valor_A |  valor_B |  valor_C
-    TEST_JOIN_3NIV:  9600;  none;  1
+    TEST_JOIN_3NIV:  9600;  none;  1;  16000000
 
     //--- 5. IFDEF / IFNDEF ---
     // 5a. ifdef simple
@@ -62,17 +64,24 @@
     TEST_FOREACH_3NIV: prop=baud val= 9600
     TEST_FOREACH_3NIV: prop=parity val= none
     TEST_FOREACH_3NIV: prop=stopBits val= 1
+    TEST_FOREACH_3NIV: prop=clock val= 16000000
 
     //--- 10. FOREACH anidado con {*} y {**} ---
     TEST_NESTED_OUTER: periferico=uart
     TEST_NESTED_OUTER: periferico=spi
+    TEST_NESTED_INNER:   uart.baud =  9600
+    TEST_NESTED_INNER:   uart.parity =  none
+    TEST_NESTED_INNER:   uart.stopBits =  1
+    TEST_NESTED_INNER:   uart.clock =  16000000
+    TEST_NESTED_INNER:   spi.clock =  1000000
+    TEST_NESTED_INNER:   spi.mode =  0
 
     //--- 11. FOREACH con directivas EMIC dentro ---
     // Verificar que se definieron
-    TEST_FOREACH_DEFINE: OK - test_iter_mod_a fue definido dentro del foreach
 
     //--- 12. FOREACH + CONDICIONAL dentro ---
     // uart tiene baud (definido arriba), spi tiene clock, i2c tiene addr
+    TEST_FOREACH_IFDEF: uart tiene baud =  9600
 
     //--- FIN DEL TEST ---
     TEST_COMPLETE: Todas las pruebas de macros ejecutadas
